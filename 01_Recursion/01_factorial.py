@@ -35,10 +35,11 @@ To find factorial of a number we will see a function, we will solve this problem
 
 def factorial(n):
 
-          # Base Condition n=1 return 1 as we have specified our first element.
+          # Base Condition n=1 return 1 as we have specified our first element. 
           
-          if n==1:
-                    return 1
+          if n==0:return 0
+          if n==1: return 1
+          
           # If not Base Condition, we calculate the values by taking it to base condition.
           # Solving smaller problems eventually getting to solve bigger problem.
           else: 
