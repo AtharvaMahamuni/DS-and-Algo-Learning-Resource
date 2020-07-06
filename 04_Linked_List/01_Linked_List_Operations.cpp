@@ -9,6 +9,8 @@ struct node
 };
 typedef struct node Node;
 
+void addAtStart() {}
+
 class LinkedListOperations
 {
 };
