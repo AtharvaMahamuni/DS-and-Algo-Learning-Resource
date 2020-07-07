@@ -1,7 +1,7 @@
 '''
 Contributed by Jiganesh Patil
 
-All the insertion we can make withh linked list
+All the insertion we can make with linked list
 '''
 
 
