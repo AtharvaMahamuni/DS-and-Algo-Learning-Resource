@@ -1,38 +1,103 @@
 #include <iostream>
-#include <cstdlib>
 using namespace std;
 
 struct node
 {
     int data;
-    struct node *next;
+    node *next;
 };
 typedef struct node Node;
 
-void addAtStart() {}
-
-class LinkedListOperations
+class LinkedList
 {
+private:
+    Node *p, *q, *head, *tail;
+
+public:
+    LinkedList();
+    void createAtStart(int);
+    void createAtEnd(int);
+    void traverse();
+
+    ~LinkedList();
 };
+
+LinkedList::LinkedList()
+{
+    head = NULL;
+    tail = NULL;
+}
+
+LinkedList::~LinkedList()
+{
+}
+
+void LinkedList::createAtStart(int data)
+{
+    p = new Node;
+    p->data = data;
+
+    if (head == NULL || tail == NULL)
+    {
+        p->next = NULL;
+        head = p;
+        tail = p;
+    }
+    else
+    {
+        p->next = head;
+        head = p;
+    }
+}
+
+void LinkedList::createAtEnd(int data)
+{
+    p = new Node;
+    p->data = data;
+
+    if (head == NULL || tail == NULL)
+    {
+        p->next = NULL;
+        head = p;
+        tail = p;
+    }
+    else
+    {
+        p->next = NULL;
+        tail->next = p;
+    }
+}
+
+void LinkedList::traverse()
+{
+    if (head == NULL || tail == NULL)
+    {
+        cout << "empty" << endl;
+    }
+    else
+    {
+        q = head;
+        while (q != NULL)
+        {
+            cout << q->data << " ";
+            q = q->next;
+        }
+    }
+}
 
 int main()
 {
-    int i;
-    do
-    {
-        cout << "Select the option from following:" << endl;
-        cout << "1.Add at start\n2.Add at end\n3.Add at middle\n4.Remove at start\n5.Remove at end\n6.Remove from selected position" << endl;
-        switch (i)
-        {
-        case 1:
-            /* code */
-            break;
+    LinkedList list;
 
-        default:
-            break;
-        }
+    list.createAtEnd(40);
 
-    } while (i != 7);
+    list.createAtStart(10);
+    list.createAtStart(20);
+    list.createAtStart(30);
+
+    list.createAtEnd(50);
+
+    list.traverse();
 
     return 0;
 }
