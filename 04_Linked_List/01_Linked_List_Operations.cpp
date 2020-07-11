@@ -17,6 +17,7 @@ public:
     LinkedList();
     void createAtStart(int);
     void createAtEnd(int);
+    void createAtGivenLocation(int);
     void deleteAtStart();
     void deleteAtEnd();
     void traverse();
@@ -39,7 +40,7 @@ void LinkedList::createAtStart(int data)
     p = new Node;
     p->data = data;
 
-    if (head == NULL || tail == NULL)
+    if (head == NULL && tail == NULL)
     {
         p->next = NULL;
         head = p;
@@ -67,6 +68,62 @@ void LinkedList::createAtEnd(int data)
     {
         p->next = NULL;
         tail->next = p;
+    }
+}
+
+void LinkedList::createAtGivenLocation(int data)
+{
+    int n;
+    int i = 1;
+    p = new Node;
+    p->data = data;
+
+    cout << "Enter the Location: ";
+    cin >> n;
+
+    if (head == NULL && tail == NULL && n == 1)
+    {
+        p->next = NULL;
+        head = p;
+        tail = p;
+    }
+    else if (n == 0)
+    {
+        cout << "Invalid Location" << endl;
+    }
+    else if (head != NULL)
+    {
+        q = head;
+        if (n == 1)
+        {
+            p->next = head;
+            head = p;
+        }
+        else
+        {
+            while (q != NULL && i < n - 1)
+            {
+                q = q->next;
+                i++;
+            }
+            if (q == NULL)
+            {
+                cout << "Invalid location" << endl;
+            }
+            else
+            {
+                p->next = q->next;
+                q->next = p;
+                if (p->next == NULL)
+                {
+                    tail = p;
+                }
+            }
+        }
+    }
+    else
+    {
+        cout << "Invalid location." << endl;
     }
 }
 
@@ -139,6 +196,7 @@ void LinkedList::traverse()
             cout << q->data << " ";
             q = q->next;
         }
+        cout << endl;
     }
 }
 
@@ -151,7 +209,7 @@ int main()
     {
 
         cout << "----------MENU-------------" << endl;
-        cout << "1.create at start\n2.create at end\n4.delete at start\n5.delete at end\n7.traverese\n8.exit\n";
+        cout << "1.create at start\n2.create at end\n3.Create at given location\n4.delete at start\n5.delete at end\n7.traverese\n8.exit\n";
         cin >> i;
 
         switch (i)
@@ -163,7 +221,7 @@ int main()
             list.createAtEnd(20);
             break;
         case 3:
-            //list.createAtStart(10);
+            list.createAtGivenLocation(30);
             break;
         case 4:
             list.deleteAtStart();
