@@ -20,6 +20,7 @@ public:
     void createAtGivenLocation(int);
     void deleteAtStart();
     void deleteAtEnd();
+    void deleteAtGivenLocation();
     void traverse();
 
     ~LinkedList();
@@ -182,6 +183,42 @@ void LinkedList::deleteAtEnd()
     }
 }
 
+void LinkedList::deleteAtGivenLocation()
+{
+    if (head == NULL && tail == NULL)
+    {
+        printf("Linked list is empty");
+    }
+    else
+    {
+        printf("Enter location: ");
+        int n = scanf("%d", &n);
+
+        if (n == 1)
+        {
+            p = head;
+            head = p->next;
+            delete p;
+        }
+        else
+        {
+            int i = 1;
+            q = head;
+            p = head->next;
+
+            while (i < n - 1)
+            {
+                q = p;
+                p = p->next;
+                i++;
+            }
+
+            q->next = p->next;
+            delete p;
+        }
+    }
+}
+
 void LinkedList::traverse()
 {
     if (head == NULL || tail == NULL)
@@ -209,7 +246,7 @@ int main()
     {
 
         cout << "----------MENU-------------" << endl;
-        cout << "1.create at start\n2.create at end\n3.Create at given location\n4.delete at start\n5.delete at end\n7.traverese\n8.exit\n";
+        cout << "1.create at start\n2.create at end\n3.Create at given location\n4.delete at start\n5.delete at end\n6.delete at given location\n7.traverese\n8.exit\n";
         cin >> i;
 
         switch (i)
@@ -230,7 +267,7 @@ int main()
             list.deleteAtEnd();
             break;
         case 6:
-            //list.createAtStart(10);
+            list.deleteAtGivenLocation();
             break;
         case 7:
             list.traverse();
