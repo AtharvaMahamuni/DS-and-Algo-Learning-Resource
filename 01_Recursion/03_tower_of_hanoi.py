@@ -5,6 +5,8 @@ Hi there, I bet If you are seeing this you may have heard about Famous Puzzle "T
 
 This is Recursive Solution to Solve Problem of Hanoi
 
+To Solve Problem Arithmatically you can also do 2**(number of disks)-1
+
 '''
 
 
