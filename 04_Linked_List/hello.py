@@ -1,2 +1,5 @@
 print("Python")
 print("HEllo world")
+print("Python")
+print("HEllo world")print("Python")
+print("HEllo world")
